@@ -66,9 +66,18 @@ public class NameFragment extends Fragment {
                     if(Integer.parseInt(nop)<2)
                     { Toast.makeText(getContext(),"Please add atleast 2 members",Toast.LENGTH_SHORT).show();}
                     else {
+                        String[] namespace=tname.split(" ");      // To remove spaces from tripname else table of tripname give error
+                        tname="";
+                       for(int i=0;i<namespace.length;i++)
+                       {
+                           if(i>0)
+                               tname+="_";
+                           tname+=namespace[i];
+
+                       }
                         Bundle bundle = new Bundle();
                         bundle.putString("nop", nop);
-                        bundle.putString("tvtripname", edttripname.getText().toString());
+                        bundle.putString("tvtripname", tname);
 
                         PersonFragment fragment = new PersonFragment();
                         fragment.setArguments(bundle);
